@@ -93,7 +93,7 @@
           <p>Each line in the text file contains a single pose.</p>
           </li>
           <li>
-          <p>Each line follows the format: <code class="lang-python">timestamp tx ty tz qx qy qz qw</code>.</p>
+          <p>Each line follows the format: <code class="lang-python">timestamp tx ty tz qx qy qz qw vx vy vz wx wy wz</code>.</p>
           </li>
           <li>
           <p>The value <code class="lang-python">timestamp</code> specifies the time at which a pose estimate should be provided, based on the timestamps listed in the <strong>Reference timestamps</strong> file.</p>
@@ -104,9 +104,12 @@
           <li>
           <p>The values <code class="lang-python">qx qy qz qw</code> represent the orientation of the event camera's optical center with respect to the world frame.</p>
           </li>
-        </ul>
-      </div>
-    </div>
+          <li>
+          <p>The values <code class="lang-python">vx vy vz</code> represent the velocity of the event camera's optical center relative to the world origin, expressed in the world coordinate frame.</p>
+          </li>
+          <li>
+          <p>The values <code class="lang-python">wx wy wz</code> represent the angular velocity of the event camera's optical center relative to the world origin, expressed in the world coordinate frame.</p>
+          </li>
 </article>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
