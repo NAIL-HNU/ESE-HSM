@@ -66,10 +66,28 @@
     <li><b>Monocular Track:</b> ... </li>
   </ul>
 
-  <div class="section-title"><h2>Test Data</h2></div>
+  <div class="section-title"><h2>Data</h2></div>
   <ul>
     <li><p><a href=""><b>seq1 (20G)</b></a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href=""><b>Calibration (1G)</b></a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href=""><b>Reference timestamps (1G)</b></a><br></li>
       <li><p><a href=""><b>seq2 (20G)</b></a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href=""><b>Calibration (1G)</b></a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href=""><b>Reference timestamps (1G)</b></a><br></li>
+  </ul>
+
+  <!-- Evaluation Metrics -->
+
+  <div class="section-title"><h2>Evaluation</h2></div>
+
+  <p>
+    The most widely used evaluation metrics for VIO systems are
+    Absolute Trajectory Error (ATE) and Relative Pose Error
+    (RPE). ATE measures the global consistency of the estimated
+    trajectory by comparing it to the ground truth, making it
+    particularly useful for assessing long-term drift and overall
+    accuracy.
+  </p>
+  <ul>
+  <li><b>ATE:</b> Absolute Pose Error</li>
+  <li><b>RPE:</b> Relative Pose Error</li>
+  <li>...</li>
   </ul>
 
   <div class="section-title"><h2>Submit</h2></div>
@@ -110,31 +128,27 @@
           <li>
           <p>The values <code class="lang-python">wx wy wz</code> represent the angular velocity of the event camera's optical center relative to the world origin, expressed in the world coordinate frame.</p>
           </li>
-</article>
+          </div>
+    </div>
+    <div class="section-title"><h2>Timeline</h2></div>
+      <li>
+      <strong>Start Time: </strong>July 1, 2025 
+      </li>
+      <li>
+        <strong>End Time: </strong>October 1, 2025 
+      </li>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-	
-<!-- Evaluation Metrics -->
-<article id="content">
+    <div class="section-title"><h2>Terms</h2></div>
+      <li>
+      <strong>General Terms: </strong>...
+      </li>
 
-    <div class="section-title"><h2>Evaluation Metrics</h2></div>
-    </article>
-    <p>
-      The most widely used evaluation metrics for VIO systems are
-      Absolute Trajectory Error (ATE) and Relative Pose Error
-      (RPE). ATE measures the global consistency of the estimated
-      trajectory by comparing it to the ground truth, making it
-      particularly useful for assessing long-term drift and overall
-      accuracy.
-    </p>
-    <ul>
-    <li><b>ATE:</b> Absolute Pose Error</li>
-    <li><b>RPE:</b> Relative Pose Error</li>
-    <li>...</li>
-    </ul>
+      </article>
 
-<div class="section-title"><h2>Leaderboard</h2></div>
+<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+
+<!-- <div class="section-title"><h2>Leaderboard</h2></div>
 <form method="post" action="eval_semantic_seg_detail.php"><table class="table table-striped table-borderless">
   <tr class="heading">
     <td class="results"></td>
@@ -160,7 +174,7 @@
     <td class="results_sub" colspan="9">J. Niu, S. Zhong, X. Lu, S. Shen, G. Gallego and Y. Zhou: <a href="https://ieeexplore.ieee.org/document/10912788"> ESVO2: Direct Visual-Inertial Odometry With Stereo Event Cameras</a>. TRO 2025.<br/></td>
    </tr>
    
- </table></form>
+ </table></form> -->
 
 <!-- <center><a target="_blank" href="table_semantic_seg.php?&benchmark=semantic2d&mode=1"> Table as LaTeX</a> | <a target="_blank" href="table_semantic_seg.php?&benchmark=semantic2d&mode=2"> Only published Methods</a></center><br><br> -->
 
