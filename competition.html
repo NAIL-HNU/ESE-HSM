@@ -24,6 +24,9 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 </head>
 
 <body class="homepage">
@@ -58,12 +61,12 @@
 <div class="container">
 <article id="content">
   <div class="section-title"><h2>SLAM Challenge</h2></div>
-  <p>Welcome to IROS 2025 EVO Challenge. This benchmark focuses on the SLAM problem ...</p>
+  <p>The IROS 2025 Event-based Vision Challenge focuses on leveraging the high temporal resolution of event cameras to enhance SLAM/VO (VIO) systems. We hope participants will develop innovative solutions that apply the unique capabilities of event cameras to address challenges faced by four common types of platforms in dynamic environments.</p>
 
   <div class="section-title"><h2>Tracks</h2></div>
   <ul>
-    <li><b>Stereo Track:</b> ... </li>
-    <li><b>Monocular Track:</b> ... </li>
+    <li><b>Event-Only:</b> SLAM/VO (VIO) systems using event cameras as the visual input. </li>
+    <li><b>Event + Grayscale:</b> SLAM/VO (VIO) systems using event cameras combined with grayscale images as the visual input. </li>
   </ul>
 
   <div class="section-title"><h2>Data</h2></div>
@@ -77,18 +80,53 @@
   <div class="section-title"><h2>Evaluation</h2></div>
 
   <p>
-    The most widely used evaluation metrics for VIO systems are
-    Absolute Trajectory Error (ATE) and Relative Pose Error
-    (RPE). ATE measures the global consistency of the estimated
-    trajectory by comparing it to the ground truth, making it
-    particularly useful for assessing long-term drift and overall
-    accuracy.
+    In this challenge, we quantify the results using a combination of <b>Absolute Trajectory Error (ATE)</b> and <b>Area Under Curve (AUC)</b> based on the weighted success-rate curve. ATE is used to assess the global consistency of the estimated trajectory, while AUC is computed from a novel linear velocity evaluation metric that accounts for velocity-dependent performance across different operating speeds. By combining ATE and AUC, we can not only measure long-term trajectory accuracy but also emphasize the system's ability to handle high-speed maneuvers, providing a more comprehensive evaluation of SLAM/VO (VIO) systems in high-speed scenarios.
   </p>
+
   <ul>
-  <li><b>ATE:</b> Absolute Pose Error</li>
-  <li><b>RPE:</b> Relative Pose Error</li>
-  <li>...</li>
+      <li><b>ATE:</b> The Absolute Trajectory Error (ATE) quantifies the global consistency of the estimated trajectory by comparing it to the ground truth. It is particularly useful for assessing long-term drift and overall accuracy throughout the trajectory. ATE is defined as:</li>
   </ul>
+
+  <ul>
+      $$ 
+      \text{ATE} = \frac{1}{N} \sum_{i=1}^{N} \left\| \mathbf{p}_i - \mathbf{p}_{i,\text{gt}} \right\|
+      $$
+  </ul>
+
+  <ul>
+      <li><b>AUC:</b> The Area Under Curve (AUC) is a unified metric introduced in this challenge to evaluate the performance of velocity estimation systems. It is computed from the weighted success-rate curve \( S_{\xi} \), which quantifies the proportion of velocity estimates where the Relative Velocity Error (RVE) is below a threshold \( \xi \).</li>
+  </ul>
+
+  <ul>
+      Velocity estimation is evaluated using the Relative Velocity Error (RVE):
+  </ul>
+
+  <ul>
+      $$ 
+      \text{RVE} = \frac{\Vert \mathbf{v}_{\text{gt}} - \mathbf{v}_{\text{est}} \Vert_2}{\Vert \mathbf{v}_{\text{gt}} \Vert_2} \times 100\%
+      $$
+  </ul>
+
+  <ul>
+      We define the weighted success-rate curve \( S_{\xi} \) as the proportion of velocity estimates with RVE below a threshold \( \xi \):
+  </ul>
+
+  <ul>
+      $$ 
+      S_{\xi} = \frac{\sum_{i}^{N} \left\| \mathbf{v}_{\text{gt},i} \right\| \cdot \delta(e_{\text{RV},i} < \xi)}{\sum_i^{N} \left\| \mathbf{v}_{\text{gt},i} \right\|}
+      $$
+  </ul>
+
+  <ul>
+      The Area Under Curve is computed from the weighted success-rate curve \( S_{\xi} \). This ensures that successful estimates during high-speed motion contribute more significantly to the metric, resulting in higher AUC values.
+  </ul>
+
+
+
+  <script type="text/javascript">
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  </script>
+
 
   <div class="section-title"><h2>Submit</h2></div>
   <p><strong>The trajectory from the left event camera is expected.</strong>  For each of the 10 trajectories in 
@@ -107,9 +145,6 @@
         <p>Note that our automatic evaluation tool expects the estimated trajectory to be in this format.</p>
 
         <ul>
-          <li>
-          <p>Each line in the text file contains a single pose.</p>
-          </li>
           <li>
           <p>Each line follows the format: <code class="lang-python">timestamp tx ty tz qx qy qz qw vx vy vz wx wy wz</code>.</p>
           </li>
